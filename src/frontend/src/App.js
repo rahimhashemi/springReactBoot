@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 
 import {FileOutlined, UserOutlined, DesktopOutlined, PieChartOutlined, TeamOutlined} from '@ant-design/icons';
 import {Breadcrumb, Layout, Menu, theme} from 'antd';
+import StudentTable from "./components/StudentTable";
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -24,7 +25,9 @@ const items = [
         getItem('Bill', '4'),
         getItem('Alex', '5'),
     ]),
-    getItem('Team', 'sub2', <TeamOutlined/>, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
+    getItem('Team', 'sub2', <TeamOutlined/>,
+        [getItem('Team 1', '6'),
+            getItem('Team 2', '8')]),
     getItem('Files', '9', <FileOutlined/>),
 ];
 
@@ -42,7 +45,7 @@ function App() {
     }
 
     useEffect(() => {
-        console.log("component is mounted! ")
+        console.log("component is mounted!")
         fetchStudents()
     }, [])
 
@@ -91,7 +94,7 @@ function App() {
                         background: colorBgContainer,
                     }}
                 >
-                    Bill is a cat.
+                    <StudentTable students = {students}/>
                 </div>
             </Content>
             <Footer

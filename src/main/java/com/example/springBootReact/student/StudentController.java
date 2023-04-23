@@ -17,7 +17,8 @@ public class StudentController {
     @GetMapping
     public List<Student> getAllStudents() {
         System.out.println("StudentController.getAllStudents " + new Timestamp(new Date().getTime()));
-        return Arrays.asList(new Student(1L, "Rahim", "hashemi@gmail.com", Gender.MALE),
+        return Arrays.asList(
+                new Student(1L, "Rahim", "hashemi@gmail.com", Gender.MALE),
                 new Student(2L, "Majid", "majid@gmail.com", Gender.MALE)
         );
     }
