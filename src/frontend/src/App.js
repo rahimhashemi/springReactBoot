@@ -1,10 +1,11 @@
 import './App.css';
 import {getAllStudents} from "./client"
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import {FileOutlined, UserOutlined, DesktopOutlined, PieChartOutlined, TeamOutlined} from '@ant-design/icons';
-import {Breadcrumb, Layout, Menu, theme} from 'antd';
+import {Breadcrumb, Empty, Layout, Menu, Spin, theme} from 'antd';
 import StudentTable from "./components/StudentTable";
+import LoadingOutlined from "@ant-design/icons/lib/icons/LoadingOutlined";
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -38,10 +39,16 @@ function App() {
     } = theme.useToken();
 
     const [students, setStudents] = useState([]);
+    const [fetching, setFetching] = useState(true);
+    const antIcon = <LoadingOutlined style={{fontSize: 24}} spin/>;
 
     const fetchStudents = () => {
         getAllStudents()
-            .then(data => setStudents(data))
+            .then(data => {
+                    setStudents(data);
+                    setFetching(false)
+                }
+            )
     }
 
     useEffect(() => {
@@ -49,8 +56,11 @@ function App() {
         fetchStudents()
     }, [])
 
+    if (fetching)
+        return <Spin indicator={antIcon}/>
+
     if (students.length <= 0)
-        return "no data";
+        return <Empty />;
 
     return <Layout
         style={{
@@ -94,7 +104,7 @@ function App() {
                         background: colorBgContainer,
                     }}
                 >
-                    <StudentTable students = {students}/>
+                    <StudentTable students={students}/>
                 </div>
             </Content>
             <Footer
@@ -102,7 +112,6 @@ function App() {
                     textAlign: 'center',
                 }}
             >
-                Ant Design ©2023 Created by Ant UED
             </Footer>
         </Layout>
     </Layout>

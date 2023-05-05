@@ -8,7 +8,7 @@ export default function StudentTable({students}) {
             title: 'ID',
             dataIndex: 'id',
             id: 'id',
-        },{
+        }, {
             title: 'Name',
             dataIndex: 'name',
             id: 'name',
@@ -24,7 +24,7 @@ export default function StudentTable({students}) {
         },
     ];
 
-    return <Table dataSource={students} columns={columns}/>;
+    return <Table dataSource={students} columns={columns} pagination={{pageSize: 50}} scroll={{y: 240}}/>;
 }
 
 
