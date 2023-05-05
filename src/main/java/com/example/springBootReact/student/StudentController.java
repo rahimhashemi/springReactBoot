@@ -19,7 +19,8 @@ public class StudentController {
         System.out.println("StudentController.getAllStudents " + new Timestamp(new Date().getTime()));
         return Arrays.asList(
                 new Student(1L, "Rahim", "hashemi@gmail.com", Gender.MALE),
-                new Student(2L, "Majid", "majid@gmail.com", Gender.MALE)
+                new Student(2L, "Majid", "majid@gmail.com", Gender.MALE),
+                new Student(3L, "Mamad", "mamad@gmail.com", Gender.MALE)
         );
     }
 }
