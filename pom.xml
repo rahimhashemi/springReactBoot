@@ -54,6 +54,28 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <!-- https://mvnrepository.com/artifact/com.google.cloud.tools/jib-maven-plugin -->
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>2.5.2</version>
+                <configuration>
+                    <from>
+                        <image>openjdk:11</image>
+                    </from>
+                    <container>
+                        <ports>
+                            8080
+                        </ports>
+                    </container>
+<!--                    <format>-->
+<!--                        OCI-->
+<!--                    </format>-->
+<!--                    <to>-->
+<!--                        <image>myimage</image>-->
+<!--                    </to>-->
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
