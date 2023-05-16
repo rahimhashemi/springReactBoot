@@ -16,7 +16,7 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
-        <app.image.name>springBoot-react</app.image.name>
+        <app.image.name>spring-boot-react</app.image.name>
         <app.image.tag/>
     </properties>
     <dependencies>
@@ -99,7 +99,9 @@
                             </from>
                             <to>
                                 <image>docker.io/simpath/${app.image.name}:${app.image.tag}</image>
+                                <!--                                <image>registry.hub.docker.com/simpath/${app.image.name}:${app.image.tag}</image>-->
                             </to>
+<!--                            <allowInsecureRegistries>true</allowInsecureRegistries>-->
                             <container>
                                 <ports>8080</ports>
                                 <format>OCI</format>
@@ -112,7 +114,9 @@
                                 <configuration>
                                     <to>
                                         <image>docker.io/simpath/${app.image.name}:${app.image.tag}</image>
+                                        <!--                                        <image>registry.hub.docker.com/simpath/${app.image.name}:${app.image.tag}</image>-->
                                     </to>
+<!--                                    <allowInsecureRegistries>true</allowInsecureRegistries>-->
                                 </configuration>
                                 <goals>
                                     <goal>build</goal>
@@ -124,7 +128,9 @@
                                 <configuration>
                                     <to>
                                         <image>docker.io/simpath/${app.image.name}:latest</image>
+                                        <!--                                        <image>registry.hub.docker.com/simpath/${app.image.name}:${app.image.tag}</image>-->
                                     </to>
+<!--                                    <allowInsecureRegistries>true</allowInsecureRegistries>-->
                                 </configuration>
                                 <goals>
                                     <goal>build</goal>
@@ -135,6 +141,7 @@
                 </plugins>
             </build>
         </profile>
+
         <profile>
             <id>jib-push-to-local</id>
             <activation>
@@ -192,6 +199,7 @@
                 </plugins>
             </build>
         </profile>
+
         <profile>
             <id>build-frontend</id>
             <activation>
