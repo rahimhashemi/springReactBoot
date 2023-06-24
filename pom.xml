@@ -12,7 +12,7 @@
     <artifactId>springBootReact</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>springBootReact</name>
+    <!--    <name>springBootReact</name>-->
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
@@ -74,7 +74,7 @@
                         </format>
                     </container>
                     <to>
-                        <image>myimage</image>
+                        spring-boot-react
                     </to>
                 </configuration>
             </plugin>
@@ -101,7 +101,7 @@
                                 <image>docker.io/simpath/${app.image.name}:${app.image.tag}</image>
                                 <!--                                <image>registry.hub.docker.com/simpath/${app.image.name}:${app.image.tag}</image>-->
                             </to>
-<!--                            <allowInsecureRegistries>true</allowInsecureRegistries>-->
+                            <!--                            <allowInsecureRegistries>true</allowInsecureRegistries>-->
                             <container>
                                 <ports>8080</ports>
                                 <format>OCI</format>
@@ -116,7 +116,7 @@
                                         <image>docker.io/simpath/${app.image.name}:${app.image.tag}</image>
                                         <!--                                        <image>registry.hub.docker.com/simpath/${app.image.name}:${app.image.tag}</image>-->
                                     </to>
-<!--                                    <allowInsecureRegistries>true</allowInsecureRegistries>-->
+                                    <!--                                    <allowInsecureRegistries>true</allowInsecureRegistries>-->
                                 </configuration>
                                 <goals>
                                     <goal>build</goal>
@@ -130,7 +130,7 @@
                                         <image>docker.io/simpath/${app.image.name}:latest</image>
                                         <!--                                        <image>registry.hub.docker.com/simpath/${app.image.name}:${app.image.tag}</image>-->
                                     </to>
-<!--                                    <allowInsecureRegistries>true</allowInsecureRegistries>-->
+                                    <!--                                    <allowInsecureRegistries>true</allowInsecureRegistries>-->
                                 </configuration>
                                 <goals>
                                     <goal>build</goal>
