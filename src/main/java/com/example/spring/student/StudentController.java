@@ -1,4 +1,4 @@
-package com.example.springBootReact.student;
+package com.example.spring.student;
 
 
 import org.springframework.web.bind.annotation.GetMapping;

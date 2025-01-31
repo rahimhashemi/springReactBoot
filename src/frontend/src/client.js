@@ -1,13 +1,30 @@
-import fetch from "unfetch";
+import axios from 'axios';
 
-export const getAllStudents = () => fetch('api/students')
-    .then(response => {
-        if (response.ok) {
-            return response;
-        }
-        // convert non-2xx HTTP responses into errors:
-        const error = new Error(response.statusText);
-        error.response = response;
-        return Promise.reject(error);
+export const getAllStudents = () => {
+    return axios.get('/api/students')
+        .then(response => response.data)
+        .catch(error => {
+            console.error('Error fetching students:', error);
+            throw error;
+        });
+};
+
+export const getAllFiles = () => {
+    return axios.get('/api/files')
+        .then(response => response.data)
+        .catch(error => {
+            console.error('Error fetching files:', error);
+            throw error;
+        });
+};
+
+export const downloadFile = (filename) => {
+    return axios.get(`/api/files/${filename}`, {
+        responseType: 'blob',
     })
-    .then(response => response.json());
+        .then(response => response)
+        .catch(error => {
+            console.error('Error downloading file:', error);
+            throw error;
+        });
+};
