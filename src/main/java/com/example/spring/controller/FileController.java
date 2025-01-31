@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
@@ -46,6 +49,31 @@ public class FileController {
             }
         } catch (IOException e) {
             return ResponseEntity.status(500).body(null);
+        }
+    }
+
+    @GetMapping("/chunk/{filename}")
+    public void downloadFileByChunk(@PathVariable String filename,
+                                    HttpServletResponse response) throws IOException {
+        Path filePath = Paths.get("src/main/resources/uploads/").resolve(filename).normalize();
+        File file = new File(filePath.toUri());
+        if (!file.isFile()) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Report not found");
+            return;
+        }
+
+        response.setContentType("application/pdf");
+        response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + file.getName());
+        response.setHeader(HttpHeaders.TRANSFER_ENCODING, "chunked");
+
+        try (InputStream inputStream = new FileInputStream(file);
+             OutputStream outputStream = response.getOutputStream()) {
+            byte[] buffer = new byte[8192];  // 8KB chunks
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+                outputStream.flush();  // Flush to send data immediately
+            }
         }
     }
 }
