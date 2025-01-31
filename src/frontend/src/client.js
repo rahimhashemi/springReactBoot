@@ -40,16 +40,6 @@ export const getReportStatus = async (jobId) => {
     }, 5000); // Poll every 5 seconds
 };
 
-// export const generateReport = async () => {
-//     const response = await axios.post('/api/reports/generate');
-//     console.log(response);
-//     const data = response.data;
-//     console.log(data);
-//     const jobId = data.jobId;
-//     console.log(jobId);
-//     await getReportStatus(jobId);
-// };
-
 export const generateReport = async () => {
     try {
         const response = await axios.post('/api/reports/generate');

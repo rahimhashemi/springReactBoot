@@ -2,7 +2,9 @@ package com.example.spring.service;
 
 import com.example.spring.model.JobDto;
 import com.example.spring.model.ReportStatus;
+import com.example.spring.report.ReportJob;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.scheduling.annotation.Async;
@@ -22,6 +24,18 @@ public class ReportService {
     private static final String REPORT_DIR = "src/main/resources/reports/";
 
     private final Map<String, ReportStatus> reportStatusMap = new ConcurrentHashMap<>();
+
+    private final RabbitTemplate rabbitTemplate;
+
+    public ReportService(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
+    }
+
+    public String startReportGeneration(String reportName) {
+        String jobId = UUID.randomUUID().toString();
+        rabbitTemplate.convertAndSend("reportQueue", new ReportJob(jobId, reportName));
+        return jobId;
+    }
 
     @Async
     public JobDto startReportGeneration() {
