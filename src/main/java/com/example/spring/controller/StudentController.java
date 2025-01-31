@@ -1,6 +1,8 @@
-package com.example.spring.student;
+package com.example.spring.controller;
 
 
+import com.example.spring.model.student.Gender;
+import com.example.spring.model.student.Student;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

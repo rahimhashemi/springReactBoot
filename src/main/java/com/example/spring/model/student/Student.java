@@ -1,4 +1,4 @@
-package com.example.spring.student;
+package com.example.spring.model.student;
 
 import lombok.*;
 

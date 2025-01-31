@@ -6,7 +6,8 @@ import { FileOutlined, UserOutlined } from '@ant-design/icons';
 import { Breadcrumb, Empty, Layout, Menu, Spin, theme } from 'antd';
 import StudentTable from "./components/StudentTable";
 import LoadingOutlined from "@ant-design/icons/lib/icons/LoadingOutlined";
-import FilesSection from "./components/FilesSection"; // Import the new component
+import FilesSection from "./components/FilesSection";
+import ReportSection from "./components/ReportSection"; // Import the new ReportSection component
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -67,7 +68,12 @@ function App() {
             return <Empty description="No students found." />;
         }
 
-        return <StudentTable students={students} />;
+        return (
+            <div>
+                <StudentTable students={students} />
+                <ReportSection /> {/* Render the ReportSection component */}
+            </div>
+        );
     };
 
     return (
