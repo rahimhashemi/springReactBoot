@@ -21,9 +21,7 @@ function getItem(label, key, icon, children) {
 
 const items = [
     getItem('User', 'sub1', <UserOutlined />, [
-        getItem('Tom', '3'),
-        getItem('Bill', '4'),
-        getItem('Alex', '5'),
+        getItem('ALL', '3'),
     ]),
     getItem('Files', 'files', <FileOutlined />), // New menu item for files
 ];
